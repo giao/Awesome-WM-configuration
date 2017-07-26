@@ -13,6 +13,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local vicious = require("vicious")
+local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 
 -- Load Debian menu entries
@@ -146,6 +147,18 @@ kbdcfg.widget:buttons(
 -- Create a textclock widget {{{ --
 mytextclock = wibox.widget.textclock()
 -- }}} Create a textclock widget --
+-- Calendar widget {{{ --
+--lain.widgets.calendar:attach(mytextclock)
+
+lain.widget.calendar({
+  attach_to = { mytextclock },
+  notification_preset = {
+    font = "Monospace 10",
+    fg   = "#1B4965",
+    bg   = "#F0F0F0"
+  },
+})
+-- }}} Calendar widget --
 -- CPU usage widget {{{ --
 cpuwidget = awful.widget.graph()
 cpuwidget:set_width(50)
