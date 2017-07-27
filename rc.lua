@@ -152,7 +152,8 @@ end
 -- Menu for choose additional keyboard layouts
 languagemenu = awful.menu({ items = { { "English", function () switch_keyboard("us", beautiful.en_layout) end, beautiful.en_layout },
                                       { "Русский", function () switch_keyboard("ru", beautiful.ru_layout) end, beautiful.ru_layout },
-                                      { "Deutsch", function () switch_keyboard("de", beautiful.de_layout) end, beautiful.de_layout }
+                                      { "Deutsch", function () switch_keyboard("de", beautiful.de_layout) end, beautiful.de_layout },
+                                      { "Français", function () switch_keyboard("fr", beautiful.fr_layout) end, beautiful.fr_layout }
                                     }
                         })
 

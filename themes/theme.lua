@@ -36,6 +36,7 @@ theme.taglist_bg_focus = "#1B4965"
 -- https://www.gosquared.com/resources/flag-icons/
 theme.de_layout   = "~/.config/awesome/themes/icons/flags/de.png"
 theme.en_layout   = "~/.config/awesome/themes/icons/flags/en.png"
+theme.fr_layout   = "~/.config/awesome/themes/icons/flags/fr.png"
 theme.ru_layout   = "~/.config/awesome/themes/icons/flags/ru.png"
 
 -- Display the taglist squares
