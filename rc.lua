@@ -15,6 +15,7 @@ local menubar = require("menubar")
 local vicious = require("vicious")
 local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
+local keyboard_layout = require("keyboard_layout")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -121,53 +122,27 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Widgets {{{ --
--- Keyboard map indicator and changer {{{ --
-kbdcfg = {}
-kbdcfg.cmd = "setxkbmap"
-kbdcfg.layout = { { "us", beautiful.en_layout }, { "ru", beautiful.ru_layout } }
-kbdcfg.current = 1  -- en is our default layout
-kbdcfg.widget = wibox.widget.imagebox(kbdcfg.layout[kbdcfg.current][2])
-
--- Function for changing keyboard by keys
-kbdcfg.switch = function ()
-  kbdcfg.current = kbdcfg.current % #(kbdcfg.layout) + 1
-  local t = kbdcfg.layout[kbdcfg.current]
-  -- kbdcfg.widget:set_text(" " .. t[1] .. " ")
-  kbdcfg.widget.image = t[2]
-  os.execute( kbdcfg.cmd .. " " .. t[1] .. " " )
-end
--- Function for changing keyboard layout by name
-function switch_keyboard(layout_name, layout_image)
-  kbdcfg.current = #kbdcfg.layout
-  for i = 1, #kbdcfg.layout do
-    if kbdcfg.layout[i][1] == layout_name then
-        kbdcfg.current = i
-        break
-    end
-  end
-  kbdcfg.widget.image = layout_image
-  os.execute( kbdcfg.cmd .. " " .. layout_name .. " " )
-end
-
--- Menu for choose additional keyboard layouts
-languagemenu = awful.menu({ items = { { "English", function () switch_keyboard("us", beautiful.en_layout) end, beautiful.en_layout },
-                                      { "Русский", function () switch_keyboard("ru", beautiful.ru_layout) end, beautiful.ru_layout },
-                                      { "Deutsch", function () switch_keyboard("de", beautiful.de_layout) end, beautiful.de_layout },
-                                      { "Français", function () switch_keyboard("fr", beautiful.fr_layout) end, beautiful.fr_layout }
-                                    }
-                        })
+-- Keyboard layout {{{ --
+local kbdcfg = keyboard_layout.gui_layout({
+                   layouts = {
+                       {"English", "us", beautiful.en_layout },
+                       {"Русский", "ru", beautiful.ru_layout }
+                   }
+               })
+kbdcfg.add_additional_layout("Deutsch", "de", beautiful.de_layout)
+kbdcfg.add_additional_layout("Français", "fr", beautiful.fr_layout)
+kbdcfg.bind()
 
 -- Mouse bindings
 kbdcfg.widget:buttons(
  awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end),
-                       awful.button({ }, 3, function () languagemenu:toggle() end))
+                       awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
 )
--- }}} Keyboard map indicator and changer --
+-- }}} Keyboard layout --
 -- Create a textclock widget {{{ --
 mytextclock = wibox.widget.textclock()
 -- }}} Create a textclock widget --
 -- Calendar widget {{{ --
---lain.widgets.calendar:attach(mytextclock)
 
 lain.widget.calendar({
   attach_to = { mytextclock },
