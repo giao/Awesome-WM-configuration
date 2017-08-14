@@ -13,9 +13,9 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local vicious = require("vicious")
-local lain = require("lain")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local keyboard_layout = require("keyboard_layout")
+local widgets = require("widgets")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -139,40 +139,6 @@ kbdcfg.widget:buttons(
                        awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
 )
 -- }}} Keyboard layout --
--- Create a textclock widget {{{ --
-mytextclock = wibox.widget.textclock()
--- }}} Create a textclock widget --
--- Calendar widget {{{ --
-
-lain.widget.calendar({
-  attach_to = { mytextclock },
-  notification_preset = {
-    font = "Monospace 10",
-    fg   = "#1B4965",
-    bg   = "#F0F0F0"
-  },
-})
--- }}} Calendar widget --
--- CPU usage widget {{{ --
-cpuwidget = awful.widget.graph()
-cpuwidget:set_width(50)
-cpuwidget:set_background_color("#494B4F")
-cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 50, 0 },
-  stops = { { 0, "#FF5656" }, { 0.5, "#88A175" }, { 1, "#AECF96" }}})
-vicious.register(cpuwidget, vicious.widgets.cpu, "$1", 3)
-cpuwidget2 = wibox.widget.textbox()
-vicious.register(cpuwidget2, vicious.widgets.cpu, 'CPU: <span color="#CC9933">$1%</span>', 1)
--- }}} CPU usage widget --
--- Memory widget {{{ --
-memwidget = wibox.widget.textbox()
-vicious.cache(vicious.widgets.mem)
-vicious.register(memwidget, vicious.widgets.mem, "RAM: $1% ($2MB/$3MB)", 1) -- Update every 1 seconds
--- }}} Memory widget --
--- Weather {{{ --
-weather = wibox.widget.textbox()
-vicious.register(weather, vicious.widgets.weather, "Weather: ${city} | Temp: ${tempc}⁰C | Humid: ${humid}%", 1200, "KPVD")
----vicious.register(weather, vicious.widgets.weather, "Weather: ${city}.  Sky: ${sky}. Temp: ${tempc}c Humid: ${humid}%. Wind: ${windkmh} KM/h", 1200, "LFBO")
--- }}} Weather --
 -- }}} Widgets --
 
 -- {{{ Wibar
@@ -286,7 +252,7 @@ awful.screen.connect_for_each_screen(function(s)
             spacer,
             wibox.widget.systray(),
             kbdcfg.widget,
-            mytextclock,
+            widgets.textclock,
             s.mylayoutbox,
         },
     }
@@ -304,13 +270,13 @@ awful.screen.connect_for_each_screen(function(s)
         },
         {
             layout = wibox.layout.fixed.horizontal,
-            memwidget,
+            widgets.memorywidget,
             separator,
-            cpuwidget,
+            widgets.textcpuwidget,
             separator,
-            cpuwidget2,
+            widgets.graphcpuwidget,
             separator,
-            weather,
+            widgets.weather,
         },
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
@@ -468,6 +434,8 @@ globalkeys = awful.util.table.join(globalkeys,
     awful.key({"Shift"}, "Alt_L", function () kbdcfg.switch() end),
     -- Alt-Shift to change keyboard layout
     awful.key({"Mod1"}, "Shift_L", function () kbdcfg.switch() end),
+    -- Ctrl-Alt-b to open browser
+    awful.key({ "Control", "Mod1" }, "b", function () awful.util.spawn(browser) end),
     -- Lock screen
     awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
     -- Take screenshot
