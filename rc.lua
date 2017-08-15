@@ -15,7 +15,6 @@ local menubar = require("menubar")
 local vicious = require("vicious")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local keyboard_layout = require("keyboard_layout")
-local widgets = require("widgets")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -82,6 +81,8 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.se,
 }
 -- }}}
+
+local widgets = require("widgets")
 
 -- {{{ Helper functions
 local function client_menu_toggle_fn()
