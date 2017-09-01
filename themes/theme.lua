@@ -39,6 +39,11 @@ theme.en_layout   = "~/.config/awesome/themes/icons/flags/en.png"
 theme.fr_layout   = "~/.config/awesome/themes/icons/flags/fr.png"
 theme.ru_layout   = "~/.config/awesome/themes/icons/flags/ru.png"
 
+-- Power icons
+theme.sleep_icon    = "~/.config/awesome/themes/icons/sleep.png"
+theme.restart_icon  = "~/.config/awesome/themes/icons/restart.png"
+theme.shutdown_icon = "~/.config/awesome/themes/icons/shutdown.png"
+
 -- Display the taglist squares
 theme.taglist_squares_sel   = "~/.config/awesome/themes/taglist/active2.png"
 theme.taglist_squares_unsel = "~/.config/awesome/themes/taglist/inactive2.png"
