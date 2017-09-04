@@ -113,7 +113,7 @@ mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesom
                                     { "Debian", debian.menu.Debian_menu.Debian, beautiful.debian_icon },
                                     { "Open terminal", terminal, beautiful.terminal_icon },
                                     { "Sleep", function() awful.util.spawn_with_shell("systemctl suspend") end, beautiful.sleep_icon },
-                                    { "Restart", function() awful.util.spawn_with_shell("restart") end, beautiful.restart_icon },
+                                    { "Restart", function() awful.util.spawn_with_shell("reboot") end, beautiful.restart_icon },
                                     { "Shut Down", function() awful.util.spawn_with_shell("poweroff") end, beautiful.shutdown_icon }
                                   }
                         })
