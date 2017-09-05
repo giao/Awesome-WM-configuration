@@ -39,6 +39,13 @@ theme.en_layout   = "~/.config/awesome/themes/icons/flags/en.png"
 theme.fr_layout   = "~/.config/awesome/themes/icons/flags/fr.png"
 theme.ru_layout   = "~/.config/awesome/themes/icons/flags/ru.png"
 
+theme.debian_icon   = "~/.config/awesome/themes/icons/debian.png"
+theme.terminal_icon = "~/.config/awesome/themes/icons/terminal.png"
+-- Power icons
+theme.sleep_icon    = "~/.config/awesome/themes/icons/sleep.png"
+theme.restart_icon  = "~/.config/awesome/themes/icons/restart.png"
+theme.shutdown_icon = "~/.config/awesome/themes/icons/shutdown.png"
+
 -- Display the taglist squares
 theme.taglist_squares_sel   = "~/.config/awesome/themes/taglist/active2.png"
 theme.taglist_squares_unsel = "~/.config/awesome/themes/taglist/inactive2.png"
@@ -77,7 +84,7 @@ theme.layout_tiletop = "~/.config/awesome/themes/layouts/tiletop.png"
 theme.layout_spiral  = "~/.config/awesome/themes/layouts/spiral.png"
 theme.layout_dwindle = "~/.config/awesome/themes/layouts/dwindle.png"
 
-theme.awesome_icon = "/usr/share/awesome/icons/awesome16.png"
+theme.awesome_icon = "~/.config/awesome/themes/icons/awesome.png"
 theme.tux_icon = "~/.config/awesome/themes/icons/tux.png"
 
 -- Define the icon theme for application icons. If not set then the icons 

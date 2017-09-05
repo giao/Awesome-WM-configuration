@@ -110,8 +110,11 @@ myawesomemenu = {
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
+                                    { "Debian", debian.menu.Debian_menu.Debian, beautiful.debian_icon },
+                                    { "Open terminal", terminal, beautiful.terminal_icon },
+                                    { "Sleep", function() awful.util.spawn_with_shell("python ~/.config/awesome/scripts/power_dialogues.py --suspend") end, beautiful.sleep_icon },
+                                    { "Restart", function() awful.util.spawn_with_shell("python ~/.config/awesome/scripts/power_dialogues.py --reboot") end, beautiful.restart_icon },
+                                    { "Shut Down", function() awful.util.spawn_with_shell("python ~/.config/awesome/scripts/power_dialogues.py --shutdown") end, beautiful.shutdown_icon }
                                   }
                         })
 
