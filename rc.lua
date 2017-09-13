@@ -443,7 +443,18 @@ globalkeys = awful.util.table.join(globalkeys,
     -- Lock screen
     awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
     -- Take screenshot
-    awful.key({ }, "Print", function () awful.util.spawn("screengrab") end)
+    awful.key({ }, "Print", function () awful.util.spawn("screengrab") end),
+    -- Rename tag
+    awful.key({ modkey, "Shift",  }, "n",
+              function ()
+                    awful.prompt.run {
+                      prompt       = "Rename tag: ",
+                      text         = awful.tag.selected().name,
+                      textbox      = awful.screen.focused().mypromptbox.widget,
+                      exe_callback = function (s) awful.tag.selected().name = s end,
+                  }
+            end,
+            {description = "rename tag", group = "awesome"})
 )
 -- }}}
 
