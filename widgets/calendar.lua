@@ -19,13 +19,14 @@ end
 local textclock = wibox.widget.textclock()
 calendar({
     today       = '<b><u><span color="#EC2BAC">%2i</span></u></b>',
+    title_align = 'center',
     col_title   = '<b>%a </b>',
     empty_sep   = '    ',
     week_col    = '<i><span color="#6D8B9D"> %V</span></i>',
-    week_day6   = '<b><span color="#ECA72B">%2i</span></b>',
-    week_day7   = '<b><span color="#ff0000">%2i</span></b>',
-    title_day6  = '<b><span color="#ECA72B">%a </span></b>',
-    title_day7  = '<b><span color="#ff0000">%a </span></b>',
+    days_style  = {
+        [6] = '<span color="#ECA72B">%s</span>',
+        [7] = '<span color="#ff0000">%s</span>'
+    }
 }):attach(textclock)
 
 return textclock
