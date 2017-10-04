@@ -1,9 +1,9 @@
-[submodule "lain"]
-	path = lain
-	url = https://github.com/copycat-killer/lain
 [submodule "keyboard_layout"]
 	path = keyboard_layout
 	url = https://github.com/echuraev/keyboard_layout
 [submodule "vicious"]
 	path = vicious
 	url = https://github.com/Mic92/vicious
+[submodule "calendar"]
+	path = calendar
+	url = https://github.com/deficient/calendar.git

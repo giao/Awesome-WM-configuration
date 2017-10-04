@@ -12,7 +12,6 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local vicious = require("vicious")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local keyboard_layout = require("keyboard_layout")
 
