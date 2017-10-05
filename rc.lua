@@ -274,11 +274,13 @@ awful.screen.connect_for_each_screen(function(s)
         {
             layout = wibox.layout.fixed.horizontal,
             widgets.memorywidget,
+            spacer,
             separator,
+            spacer,
             widgets.textcpuwidget,
+            spacer,
             separator,
-            widgets.graphcpuwidget,
-            separator,
+            spacer,
             widgets.weather,
         },
         { -- Left widgets
