@@ -126,19 +126,19 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Widgets {{{ --
 -- Keyboard layout {{{ --
-local kbdcfg = keyboard_layout.gui_layout({
-                   layouts = {
-                       {"English", "us", beautiful.en_layout },
-                       {"Русский", "ru", beautiful.ru_layout }
-                   }
-               })
-kbdcfg.add_additional_layout("Deutsch", "de", beautiful.de_layout)
-kbdcfg.add_additional_layout("Français", "fr", beautiful.fr_layout)
+local kbdcfg = keyboard_layout.kbdcfg({type="gui"})
+
+kbdcfg.add_primary_layout("English", beautiful.en_layout, "us")
+kbdcfg.add_primary_layout("Русский", beautiful.ru_layout, "ru")
+
+kbdcfg.add_additional_layout("Deutsch",  beautiful.de_layout, "de")
+kbdcfg.add_additional_layout("Français", beautiful.fr_layout, "fr")
+
 kbdcfg.bind()
 
 -- Mouse bindings
 kbdcfg.widget:buttons(
- awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch() end),
+ awful.util.table.join(awful.button({ }, 1, function () kbdcfg.switch_next() end),
                        awful.button({ }, 3, function () kbdcfg.menu:toggle() end))
 )
 -- }}} Keyboard layout --
@@ -436,9 +436,9 @@ clientkeys = awful.util.table.join(
 -- Keyboard bindings
 globalkeys = awful.util.table.join(globalkeys,
     -- Shift-Alt to change keyboard layout
-    awful.key({"Shift"}, "Alt_L", function () kbdcfg.switch() end),
+    awful.key({"Shift"}, "Alt_L", function () kbdcfg.switch_next() end),
     -- Alt-Shift to change keyboard layout
-    awful.key({"Mod1"}, "Shift_L", function () kbdcfg.switch() end),
+    awful.key({"Mod1"}, "Shift_L", function () kbdcfg.switch_next() end),
     -- Ctrl-Alt-b to open browser
     awful.key({ "Control", "Mod1" }, "b", function () awful.util.spawn(browser) end),
     -- Lock screen
