@@ -48,7 +48,7 @@ end
 beautiful.init("~/.config/awesome/themes/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "rxvt-unicode"
+terminal = "kitty"
 browser = "google-chrome"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -648,4 +648,5 @@ awful.util.spawn_with_shell("/usr/local/bin/dropbox.py start")
 -- Got info from here: https://crunchbang.org/forums/viewtopic.php?pid=278167#p278167
 awful.util.spawn_with_shell("nm-applet") -- networkManager applet
 awful.util.spawn_with_shell("volumeicon") -- Volume icon
+awful.util.spawn_with_shell("compton -b --backend glx --vsync opengl-swc") -- standalone compositor for Xorg
 -- }}}
