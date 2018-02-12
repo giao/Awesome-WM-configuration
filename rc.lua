@@ -18,6 +18,16 @@ local keyboard_layout = require("keyboard_layout")
 -- Load Debian menu entries
 require("debian.menu")
 
+function dump_tags()
+    for s in screen do
+        gears.debug.print_warning("Hello" .. s.index)
+        --gears.debug.dump(s.tags, "tags")
+    end
+end
+
+function read_tags()
+end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -448,14 +458,17 @@ globalkeys = awful.util.table.join(globalkeys,
     -- Rename tag
     awful.key({ modkey, "Shift",  }, "n",
               function ()
-                    awful.prompt.run {
-                      prompt       = "Rename tag: ",
-                      text         = awful.tag.selected().name,
-                      textbox      = awful.screen.focused().mypromptbox.widget,
-                      exe_callback = function (s) awful.tag.selected().name = s end,
-                  }
-            end,
-            {description = "rename tag", group = "awesome"})
+                awful.prompt.run {
+                  prompt       = "Rename tag: ",
+                  text         = awful.tag.selected().name,
+                  textbox      = awful.screen.focused().mypromptbox.widget,
+                  exe_callback = function (s)
+                    awful.tag.selected().name = s
+                    dump_tags()
+                  end,
+                }
+              end,
+              {description = "rename tag", group = "awesome"})
 )
 -- }}}
 
@@ -647,6 +660,6 @@ awful.util.spawn_with_shell("~/.scripts/pidgin_xscreenserver.sh")
 awful.util.spawn_with_shell("/usr/local/bin/dropbox.py start")
 -- Got info from here: https://crunchbang.org/forums/viewtopic.php?pid=278167#p278167
 awful.util.spawn_with_shell("nm-applet") -- networkManager applet
-awful.util.spawn_with_shell("volumeicon") -- Volume icon
+awful.util.spawn_with_shell("pkill volumeicon; volumeicon") -- Volume icon
 awful.util.spawn_with_shell("compton -b --backend glx --vsync opengl-swc") -- standalone compositor for Xorg
 -- }}}
