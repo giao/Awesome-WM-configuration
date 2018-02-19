@@ -14,6 +14,7 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 local keyboard_layout = require("keyboard_layout")
+local translate = require("awesome-wm-widgets.translate-widget.translate")
 
 -- Load Debian menu entries
 require("debian.menu")
@@ -455,6 +456,8 @@ globalkeys = awful.util.table.join(globalkeys,
     awful.key({ "Control", "Mod1" }, "l", function () awful.util.spawn("xscreensaver-command -lock") end),
     -- Take screenshot
     awful.key({ }, "Print", function () awful.util.spawn("screengrab") end),
+    -- Translate
+    awful.key({ modkey  }, "c", function() translate.show_translate_prompt() end, { description = "run translate prompt", group = "launcher"  }),
     -- Rename tag
     awful.key({ modkey, "Shift",  }, "n",
               function ()
