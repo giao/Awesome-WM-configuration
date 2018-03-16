@@ -137,7 +137,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 -- Widgets {{{ --
 -- Keyboard layout {{{ --
-local kbdcfg = keyboard_layout.kbdcfg({type="gui"})
+local kbdcfg = keyboard_layout.kbdcfg({type="gui", remember_layout = true})
 
 kbdcfg.add_primary_layout("English", beautiful.en_layout, "us")
 kbdcfg.add_primary_layout("Русский", beautiful.ru_layout, "ru")
