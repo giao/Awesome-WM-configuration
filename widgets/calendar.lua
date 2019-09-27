@@ -8,7 +8,8 @@ function calendar:calc_space(year, month)
     local tA = { year=year, month=month, day=1 }
     local page_title = os.date('%B %Y', os.time(tA))
     local space_size = notify_width/2 - page_title:len()/2 + 1
-    self.page_title = (" "):rep(space_size) .. '%B %Y'
+    -- self.page_title = (" "):rep(space_size) .. '%B %Y'
+    self.page_title = '%B %Y'
     return space_size
 end
 function calendar:switch(months)
@@ -41,7 +42,7 @@ calendar({
         [6] = '<span color="#ECA72B">%s</span>',
         [7] = '<span color="#ff0000">%s</span>'
     },
-    page_title  = (" "):rep(space_size) .. '%B %Y'
+    page_title  = '%B %Y'
 }):attach(textclock)
 
 return textclock
