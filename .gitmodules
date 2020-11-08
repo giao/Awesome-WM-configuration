@@ -1,12 +1,12 @@
 [submodule "keyboard_layout"]
 	path = keyboard_layout
-	url = https://github.com/echuraev/keyboard_layout
+	url = https://github.com/giao/keyboard_layout
 [submodule "vicious"]
 	path = vicious
-	url = https://github.com/Mic92/vicious
+	url = https://github.com/giao/vicious
 [submodule "calendar"]
 	path = calendar
-	url = https://github.com/deficient/calendar.git
+	url = https://github.com/giao/calendar.git
 [submodule "awesome-wm-widgets"]
 	path = awesome-wm-widgets
-	url = https://github.com/streetturtle/awesome-wm-widgets
+	url = https://github.com/giao/awesome-wm-widgets
